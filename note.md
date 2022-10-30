@@ -1,14 +1,17 @@
 # 研究目标
 异质异构联邦元学习，主要涉及学习过程的*收敛性*、*隐私性*
+
 # FML面临的挑战
 + 参与设备的数量可能有成千上万台，一个低效的设备选择算法会导致全局模型收敛速度降低。
 (12-14)有几篇文章提出了联邦学习收敛的设想，但不能直接应用于FML。
 + 面对真实情况，FML与设备的一些时间有强关联，比如计算时间、通信时间等。
 + 由于FML在本地训练中涉及高阶信息（可能是梯度）和有偏差的随机梯度下降，因此现有的FL加速方法很难应用在FML中。
+
 # FML的数学分析
 + “A collaborative learning framework via federated meta-learning,”
 + “Personalized federated learning with theoretical guarantees: A model-agnostic meta-learning approach,”
 + “Inexact-ADMM based federated meta-learning for fast and continual edge learning,”
+
 # 设备选择研究paper
 ## Client selection for federated learning with heterogeneous resources in mobile edge
 
@@ -18,7 +21,7 @@
 
 ## J. Ren, G. Yu, and G. Ding Accelerating DNN training in wireless federated edge learning systems
 引入batchsize选择设备的方法来加速联邦学习过程
-## [29]Adaptive Federated Learning in Resource Constrained Edge Computing Systems
+## [29](./source/../adaptive_fed.md)Adaptive Federated Learning in Resource Constrained Edge Computing Systems
 0. 作者提出一种控制算法，在给定一个已知的资源预算的情况下，利用该控制算法在本地更新和全局参数聚合之间作出最优权衡(就是在每轮算法中实时调整tao的值),该权衡的目的是最小化损失函数。
 1. tao是指两次全局之间的本地迭代轮次
 
