@@ -1,3 +1,5 @@
+# title
+Adaptive Federated Learning in Resource Constrained Edge Computing Systems
 # 目标函数
 F(wf)指联邦学习中的全局损失函数;
 s.t.指服从于;
@@ -16,7 +18,7 @@ b_m指一次全局更新消耗的能源数
 
 # 找到全局参数的收敛界
 第一步找到在每轮迭代中本地迭代的参数和全局参数的距离
-第二步找到每轮第二代中本地迭代的参数的收敛界
+第二步找到每轮迭代中本地迭代的参数的收敛界
 将上述两步结合就得到了全局的收敛界
 
 ## 梯度分歧
