@@ -21,6 +21,7 @@
 
 ## J. Ren, G. Yu, and G. Ding Accelerating DNN training in wireless federated edge learning systems
 引入batchsize选择设备的方法来加速联邦学习过程
+
 ## [29](./source/../adaptive_fed.md)Adaptive Federated Learning in Resource Constrained Edge Computing Systems
 0. 作者提出一种控制算法，在给定一个已知的资源预算的情况下，利用该控制算法在本地更新和全局参数聚合之间作出最优权衡(就是在每轮算法中实时调整tao的值),该权衡的目的是在资源有限的情况下最小化损失函数。
 1. tao是指两次全局之间的本地迭代轮次
@@ -50,9 +51,34 @@
 + 作者使用增广的拉格朗日函数描述该优化问题，并利用ADMM算法来解决该优化问题
 + ADMM算法是一种解决可分解优化问题的方法，可以将原来的方法分解为多个子问题来并行求解。ADMM算法相对于SGD收敛速度较慢，ADMM主要用于解空间较大的问题上。
 
+## HFedMS: Heterogeneous Federated Learning with Memorable Data Semantics in Industrial Metaverse
++ 本篇文章将联邦学习应用在工业元宇宙的背景下，见[元宇宙相关](metaverse.md)
++ 作者首先利用了聚类的思想，根据不同客户端的分布聚成多类。
++ 然后在根据这些类别，构造训练分组，达到“组内异构，组间同构，组内顺序训练，组间平行训练”的效果
+
+## Optimizing Federated Learning on Non-IID Data with Reinforcement Learning
++ 使用强化学习中的经验总结来为选择每轮参与训练的设备
+
+## Adaptive Federated Optimization
++ 提升模型在非独立同分布数据下的收敛性
+
+# 联邦学习分组策略
+## Heterogeneous federated learning via grouped sequential-to-parallel training
+
+## Data heterogeneity-robust federated learning via group client selection in industrial iot
+
+## Fedgs: A federated group synchronization framework for heterogeneous data
+
+## 数据增强的思路
+### Communication-Efficient On-Device Machine Learning: Federated Distillation and Augmentation under Non-IID Private Data
+作者将联邦蒸馏和GAN结合，在训练全局模型的基础上，再多训练一个全局GAN模型：1.用户首先上传本地样本的输入输出 2.利用GAN进行重新采样，训练一个全局GAN 3.用户下载GAN模型，利用该GAN模型进行本地数据增强，目标是将本地的non iid数据填充为iid数据。 4. 将数据用于本地模型训练 5. 上传新的输入输出label给server 6. 服务器训练后然后用户下载更新本地模型
+![GAN示意图](./source/FAug.png)
 
 # 想法
 + 异质异构是指每个client的模型层数、参数数量可能不同，有没有办法找到一种能够衡量模型的方法（包括层数、参数数量）,确实感觉对于异质异构，使用蒸馏学习会是一个比较好的方法。
 + gossip 学习 + 联邦蒸馏学习（指定一个全局数据集，只发送X和y），结合起来就是向周围的节点广播X和y
 + gossip 学习 + 联邦元学习？
 + 将贡献度的思想映射为权重，为每个设备的梯度赋自适应的动态权重。
++ GAN+联邦蒸馏，将本地Client的模型作为判别器，另外训练一个生成器，将生成器生成的数据“分布”（或者输入输出）传给server，server整合数据进行训练。
++ 利用强化学习来训练联邦元学习的分组策略。
++ 针对流式数据来优化联邦元学习？（流式学习——数据降维）
